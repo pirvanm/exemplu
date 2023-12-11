@@ -12,7 +12,14 @@ class UserController extends Controller
 
         //metoda de listarea a userilor 
         // all pentru a luat toti useri
-        $users = User::all();
+
+        //conditi pentru a lua un obiect gold 
+        //$users = User::where('id', '3')->get();
+        $users = User::get();
+
+
+
+        // dd(count($users));
 
         //$users = User::first();
         //afisarea primului user
@@ -23,11 +30,13 @@ class UserController extends Controller
 
         // dd($users);
         //definire variabila(clasa) pentru a lua toti useri
+        //dd('stop nu trimite date din view (fisierul blade');
         return view('users.index', compact('users'));
     }
 
     public function create()
     {
+        //incarcarea formularului pentru salvarea utilizatori
         return view('users.create');
     }
 
