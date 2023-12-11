@@ -12,6 +12,7 @@
  -->
 
     <div class="list-group">
+        <!-- vezi : https://getbootstrap.com/docs/4.0/components/list-group/ -->
         <!-- foreach, iterarea datelor ce au venit din controller , mai exact din metoda index a fisierului
     usercontroller.php  -->
 
