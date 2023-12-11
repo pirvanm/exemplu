@@ -73,7 +73,18 @@ class UserController extends Controller
 
     public function show(User $user)
     {
+
+        //fis punem in parametru sub forma acesta 
+        // $user = User::first();
+
+        // fie punedirect in metoda
+        // dependecy insejection , intre () $user User este la fel cu $user = User
+        //ii spune aceste metoda ce html sa incarca, si ii trimite date acestui html
+
+        //$user ceva definit pentru a se refolosi in compact()
         return view('users.show', compact('user'));
+        // return view , trimite catre folderul users , in fisierul show.blade.php , datele dinamice din 
+        //$user 
     }
 
     public function edit(User $user)
