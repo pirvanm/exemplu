@@ -5,7 +5,11 @@
 
 <div class="container mt-4">
     <h1 class="mb-4">Users</h1>
-    <!-- <a href="{{ route('users.create') }}" class="btn btn-primary mb-3">Create New User</a> -->
+    <a href="{{ route('users.create') }}" class="btn btn-primary mb-3">
+        Create New User</a>
+    <!-- mb-4 clasa definita de boostra -->
+    <!-- vezi : https://getbootstrap.com/docs/4.0/utilities/spacing/
+ -->
 
     <div class="list-group">
         <!-- foreach, iterarea datelor ce au venit din controller , mai exact din metoda index a fisierului
