@@ -33,6 +33,12 @@ Route::get('/prima', function () {
 
 Route::resource('users', UserController::class);
 
+//lsitarea tuturor userilor
+Route::get('/users', [UserController::class, 'index'])
+    ->name('users.index');
+//Listare tuturor Userilor 
+
+
 // Ruta pentru stocarea informatilor din formular 
 Route::post('/users', [UserController::class, 'store'])
     ->name('users.store');
