@@ -9,7 +9,20 @@ class UserController extends Controller
 {
     public function index()
     {
+
+        //metoda de listarea a userilor 
+        // all pentru a luat toti useri
         $users = User::all();
+
+        //$users = User::first();
+        //afisarea primului user
+
+
+        //transformarea codului Laravel in cod mysql, pentru a vedea de mysql rulam
+        // $users = User::toSql();
+
+        // dd($users);
+        //definire variabila(clasa) pentru a lua toti useri
         return view('users.index', compact('users'));
     }
 
