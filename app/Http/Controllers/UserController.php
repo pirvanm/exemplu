@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+// includerea clasei Request
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -40,10 +41,25 @@ class UserController extends Controller
         return view('users.create');
     }
 
+    // public nivelul de vizibilitate a metodei
     public function store(Request $request)
     {
+        // Request $request
+        // Request , este o clasa de este definite in sistemul laravel 
+        // $request = obiectul ce "incapsuleaza"/ memoreaza clasa request
+
+        // De ce nu avem = ? fiindca asignam
+        // dependcy insejection , faptul ca punem prima data 
+        // Clasa si dupa cu spatiu fara vrun operator precum = pentru atirbuirea
+        // intre () intr-o metoda(functie mai completa)
         User::create($request->all());
 
+        //Illuminate\Http\Request; clasa request se regaseste aici  si este folosita de aici 
+
+        // Clasa User, metoda create pentru a salva direct in modelul  ce este legat(bingind) de tabelul user
+        //$request este un obiect , ca permite accesarea metodelor din clasa Request
+
+        // all() metoda din clasa request
 
 
         // User::create([
@@ -55,6 +71,7 @@ class UserController extends Controller
         // ]);
 
 
+        // dupa ce am salvat userul , vom face redirect catre ruta users.index
         return redirect()->route('users.index');
 
         /*
@@ -89,13 +106,40 @@ class UserController extends Controller
 
     public function edit(User $user)
     {
+        // dependncy injection pentru Clasa obiectul, User $user 
+
+        //$user = User::all();
+        // ca valori pentru acesta metoda(User $user)
+        //rezultatul este acelasi
+        // trimitem obiectul user 
+        // $user ,face automat pentru atribuirea userlui curent
+
+        // datorita rutei generate : users/{user} , va trimite in fisierul nostru
+        // edit.blade.php din folderul users 
+
+        //return view (folder.fisierulfinal.blade.php)
+        //return view (folder.folder2.folder3.fisierblade.php)
+        //    . pentru a pentru accesa fisierul din folderul dat in partea stanga
+
         return view('users.edit', compact('user'));
+        // daca nu avem fisierul in nici un folder din folderul views, nu avem nevoie de punct
+        // return view('welcome', compact('user'));
     }
 
     public function update(Request $request, User $user)
     {
-        $user->update($request->all());
-        return redirect()->route('users.index');
+        dd('aici2');
+        // validate de tip backend direct in controller pe metoda
+        //       $validated = $request->validate([
+        //     'title' => 'required|unique:posts|max:255',
+        //     'body' => 'required',
+        // ]);
+        // $request->all () 
+
+
+        // pentru a nu mai lua camp cu camp 
+        //  $user->update($request->all());
+        //return redirect()->route('users.index');
     }
 
     public function destroy(User $user)
