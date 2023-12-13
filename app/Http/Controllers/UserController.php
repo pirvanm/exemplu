@@ -128,22 +128,28 @@ class UserController extends Controller
 
     public function update(Request $request, User $user)
     {
-        dd('aici2');
+        //dd('aici2');
         // validate de tip backend direct in controller pe metoda
         //       $validated = $request->validate([
         //     'title' => 'required|unique:posts|max:255',
         //     'body' => 'required',
         // ]);
-        // $request->all () 
+        // prealuarea toate campurile folosind $request->all()
+        //pentru a vedea ce campuri putem lua din request , folosim all()
+        // prealuarea unui singur camp :$request->name
+        // dd($request->name);
 
 
         // pentru a nu mai lua camp cu camp 
-        //  $user->update($request->all());
+        // metoda update, metoda ce ne permite actualizarea modelului curent 
+        //modelul curent (filtrat de catre User $user), va stii id ul curent
+        $user->update($request->all());
         //return redirect()->route('users.index');
     }
 
     public function destroy(User $user)
     {
+
         $user->delete();
         return redirect()->route('users.index');
     }
